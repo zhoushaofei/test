@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:/project/upchina/taf-sdk/taf/cpp/include/**",
+                "E:/project/upchina/taf-sdk/upevent/include/**",
+                "E:/project/upchina/taf-sdk/uppersist/include/**",
+                "E:/project/upchina/taf-sdk/upagdecoder/include/**",
+                "E:/project/upchina/thirdparty/include/**",
+                "E:/我的工作/C06-CTP/6.3.19/traderapi_v6.3.19_P1/v6.3.19_P1_20200106_api/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.24.28314/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}

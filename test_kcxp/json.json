@@ -1,0 +1,521 @@
+{
+    // "ip":"10.4.100.171",
+    // "port":"21000",
+    // "sendQName":"req_test1",
+    // "recvQName":"ans_test1",
+    // "fundid" : "035500000201",
+    // "password" : "123321",
+
+    // "ip":"10.4.100.181",
+    // "port":"21000",
+    // "sendQName":"req_bjhg",
+    // "recvQName":"ans_bjhg",
+    // "fundid" : "035500000201",
+    // "password" : "123321",
+
+    // "ip":"10.4.100.171",
+    // "port":"21000",
+    // "sendQName":"req_test1",
+    // "recvQName":"ans_test1",
+    // "fundid" : "035500000210",
+    // "password" : "123321",
+
+    // "ip":"192.168.8.173",
+    // "port":"21000",
+    // "sendQName":"req1",
+    // "recvQName":"ans1",
+    // "fundid" : "080909002010",
+    // "password" : "123456",
+
+    // "ip":"10.8.8.185",
+    // "port":"21000",
+    // "sendQName":"req_test185",
+    // "recvQName":"ans_test185",
+    // "fundid" : "020500000625",
+    // "password" : "123321",
+
+    // "ip":"10.8.8.185",
+    // "port":"21000",
+    // "sendQName":"req_test185",
+    // "recvQName":"ans_test185",
+    // "fundid" : "020500000001",
+    // "password" : "123321",
+
+    // "ip":"10.4.101.79",
+    // "port":"21000",
+    // "sendQName":"req_rzrq",
+    // "recvQName":"ans_rzrq",
+    // "fundid" : "010188879280",
+    // "password" : "123321",
+
+    // "ip":"10.1.100.233",
+    // "port":"21000",
+    // "sendQName":"req_wsjy3",
+    // "recvQName":"ans_wsjy3",
+    // "fundid" : "010188879280",
+    // "password" : "123321",
+
+    // "ip":"10.1.100.234",
+    // "port":"21000",
+    // "sendQName":"req_rzrq_wsjy2",
+    // "recvQName":"ans_rzrq_wsjy2",
+    // "fundid" : "010188879280",
+    // "password" : "123321",
+
+    "ip":"10.8.102.22",
+    "port":"21000",
+    "sendQName":"req_test1",
+    "recvQName":"ans_test1",
+    "fundid" : "11100006096",
+    "password" : "888888",
+
+
+    "operway" : "8",
+    "login" : "1",
+
+
+    // "run" : ["heartbeat"],
+    // "run" : ["order-stkOrder"],
+    "run" : ["queryorder-nologin"],
+    // "run" : ["queryposition-nologin"],
+    // "run" : ["order-etf"],
+    // "run" : ["queryorder"],
+
+    "heartbeat":{
+        "funcid" : "410232" //查询系统当前状态
+    },
+
+    "queryorder-nologin":{
+        //固定入参
+        // "custid" : "010127184999",
+        // "custorgid" : "0101",
+        // "custid" : "10100000088",
+        // "custorgid" : "0101",
+        // "custid" : "35500000201",
+        // "custorgid" : "0355",
+        "custid" : "35500000203",
+        "custorgid" : "0355",
+        // "custid" : "10188879281",
+        // "custorgid" : "0101",
+        // "custid" : "10300022380",
+        // "custorgid" : "0355",
+        // "custid" : "35500000205",
+        // "custorgid" : "0355",
+        // "custid" : "10100000004",
+        // "custorgid" : "0101",
+        // "custid" : "10100058638",
+        // "custorgid" : "0101",
+        // "custid" : "10900860795",
+        // "custorgid" : "0109",
+        // "custid" : "10701085666",
+        // "custorgid" : "0107",
+        // "custid" : "232000008089", //req_wsjy9/ans_wsjy9
+        // "custorgid" : "2320",
+        // "custid" : "", //req_wsjy1/ans_wsjy1
+        // "custorgid" : "",
+        // "custid" : "220300003724", //req_rzrq_wsjy2/ans_rzrq_wsjy2
+        // "custorgid" : "2203",
+
+        "trdpwd" : "",
+        "netaddr": "",
+        "orgid" : "",
+        "operway" : "",
+        "ext" : "0",
+        "custcert" : "",
+        "ticket" : "",
+
+        // //业务参数
+        // "funcid" : "410510", //当日委托明细查询
+        // "market" : "",
+        // "fundid" : "",
+        // "secuid" : "",
+        // "stkcode" : "",
+        // "ordersno" : "19",
+        // "bankcode" : "",
+        // "qryflag" : "1",
+        // "count" : "100",
+        // "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "410514", //当日委托汇总
+        // "market" : "",
+        // "fundid" : "",
+        // "stkcode" : "",
+        // "bankcode" : "",
+
+        // //业务参数
+        // "funcid" : "410522", //当日委托汇总
+        // "market" : "",
+        // "fundid" : "",
+        // "stkcode" : "",
+        // "bankcode" : "",
+
+        // //业务参数
+        // "funcid" : "430001", //当日委托查询（港股通）
+        // "market" : "",
+        // "fundid" : "",
+        // "secuid" : "",
+        // "stkcode" : "",
+        // "ordersno" : "",
+        // "ordergroup" : "",
+        // "qryflag" : "1",
+        // "count" : "10",
+        // "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "410562", //ETF网下认购申请查询
+        // "sysdate" : "", //系统日期
+        // "sno" : "", //申请序号
+        // "market" : "", //交易市场
+        // "fundid" : "35500000201", //资金帐户
+        // "ofcode" : "", //基金认购代码
+        // "bsflag" : "", //业务类别
+        // "cancelflag" : "", //撤单标识
+        // "status" : "", //状态
+
+        //业务参数
+        "funcid" : "410512", //当日成交明细
+        "market" : "",
+        "fundid" : "",
+        "secuid" : "",
+        "stkcode" : "",
+        "ordersno" : "",
+        "bankcode" : "",
+        "qryflag" : "1",
+        "count" : "",
+        "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "410504", //股份汇总查询
+        // "market" : "",
+        // "fundid" : "",
+        // "stkcode" : "",
+        // "secuid" : "",
+
+        // //业务参数
+        // "funcid" : "410503", //股份明细查询
+        // "market" : "S",
+        // "fundid" : "",
+        // "stkcode" : "",
+        // "secuid" : "",
+        // "qryflag" : "1",
+        // "count" : "10",
+        // "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "410512", //当日成交明细
+        // "market" : "",
+        // "fundid" : "",
+        // "stkcode" : "",
+        // "secuid" : "",
+        // "ordersno" : "",
+        // "bankcode" : "",
+        // "qryflag" : "1",
+        // "count" : "10",
+        // "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "411605", //资金查询(含创新业务)
+        // "fundid" : "", //资金账号
+        // "moneytype" : "", //货币
+
+        // 资金查询(含创新业务)(411605)
+        // 功能代码	411605
+        // 功能描述	资金查询(含创新业务)
+        // 请求数据	域名称	标识	类型及长度	必要	描述
+        //     资金账号	fundid	int64	Y	不送值查询全部
+        //     财富账户	fortuneid	int64	N	-1表示查全部，不送则默认值为0，仅查询0账户
+        //     货币	moneytype	char(1)	Y	不送值查询全部
+        //     买卖类别	bsflag	char(2)	N
+
+        // //业务参数
+        // "funcid" : "410318", //客户帐号查询
+
+        // //业务参数
+        // "funcid" : "410321", //客户资料查询
+
+        // //业务参数
+        // "funcid" : "410531", //客户机构查询
+        // "secuid" : "0223790122",
+
+        // //业务参数
+        // "funcid" : "410220", //取字典信息
+        // "dictitem" : "Ammlb",
+        // "subitem" : "",
+
+        // //业务参数
+        // "funcid" : "411521", //对帐查询
+        // "strdate" : "20210501", //起始日期
+        // "enddate" : "20210512", //终止日期
+        // "fundid" : "", //资金帐户
+        // "printflag" : "0", //重打标识，1－不允许重打，0－允许重打
+        // "qryflag" : "1", //查询方向
+        // "count" : "", //请求行数
+        // "poststr" : "", //定位串
+
+        // //业务参数
+        // "funcid" : "411525", //对帐单查询
+        // "strdate" : "20210518", //起始日期
+        // "enddate" : "20210520", //终止日期
+        // "fundid" : "", //资金帐户
+        // "moneytype" : "", //货币代码
+        // "printflag" : "0", //重打标识，1－不允许重打，0－允许重打
+        // "qryflag" : "1", //查询方向
+        // "count" : "10", //请求行数
+        // "poststr" : "", //定位串
+
+        // //业务参数
+        // "funcid" : "411520", //交割单查询
+        // "strdate" : "20200311", //起始日期
+        // "enddate" : "20200531", //终止日期
+        // "fundid" : "", //资金帐户
+        // "moneytype" : "", //货币代码
+        // "printflag" : "0", //重打标识，1－不允许重打，0－允许重打
+        // "qryflag" : "1", //查询方向
+        // "count" : "10", //请求行数
+        // "poststr" : "", //定位串
+
+        // //业务参数
+        // "funcid" : "430016", //交割单查询（港股通）
+        // "strdate" : "20200520", //起始日期
+        // "enddate" : "20211030", //终止日期
+        // "fundid" : "", //资金帐户
+        // "printflag" : "0", //重打标识，1－不允许重打，0－允许重打
+        // "qryflag" : "1", //查询方向
+        // "count" : "10", //请求行数
+        // "poststr" : "", //定位串
+
+        // //业务参数
+        // "funcid" : "411513", //历史成交明细
+        // "strdate" : "20210510", //起始日期
+        // "enddate" : "20210512", //终止日期
+        // "fundid" : "", //资金帐户
+        // "market" : "", //交易市场
+        // "secuid" : "", //股东代码
+        // "stkcode" : "123100", //证券代码
+        // "bankcode" : "", //外部银行
+        // "qryflag" : "1", //查询方向
+        // "count" : "10", //请求行数
+        // "poststr" : "", //定位串
+
+        // //业务参数
+        // "funcid" : "411515", //历史委托汇总
+        // "strdate" : "20210510", //起始日期
+        // "enddate" : "20210512", //终止日期
+        // "fundid" : "", //资金帐户
+        // "market" : "", //交易市场
+        // "stkcode" : "", //证券代码
+        // "bankcode" : "", //外部银行
+
+        // //业务参数
+        // "funcid" : "411517", //历史成交汇总
+        // "strdate" : "20210510", //起始日期
+        // "enddate" : "20210512", //终止日期
+        // "fundid" : "", //资金帐户
+        // "market" : "", //交易市场
+        // "stkcode" : "", //证券代码
+        // "bankcode" : "", //外部银行
+
+        // //业务参数
+        // "funcid" : "410231", //取权证信息
+        // "market" : "", //交易市场
+        // "stkcode" : "", //证券代码
+
+        // //业务参数
+        // "funcid" : "410203", //证券信息
+        // "market" : "", //交易市场
+        // "stkcode" : "127038", //证券代码
+
+        "11" : ""
+    },
+
+    "queryposition-nologin":{
+        //固定入参
+        // "custid" : "10100000088",
+        // "custorgid" : "0101",
+        "custid" : "35500000201",
+        "custorgid" : "0355",
+        "trdpwd" : "",
+        "netaddr": "",
+        "orgid" : "",
+        "operway" : "",
+        "ext" : "",
+        "custcert" : "",
+        "ticket" : "",
+
+        //业务参数
+        "funcid" : "410503", //股份明细查询
+        "market" : "",
+        "fundid" : "",
+        "secuid" : "",
+        "stkcode" : "",
+        "qryflag" : "1",
+        "count" : "10",
+        "poststr" : "",
+
+        // //业务参数
+        // "funcid" : "410318", //客户帐号查询
+
+        // //业务参数
+        // "funcid" : "410321", //客户资料查询
+
+        // //业务参数
+        // "funcid" : "410531", //客户机构查询
+        // "secuid" : "0223790122",
+
+        // //业务参数
+        // "funcid" : "410220", //取字典信息
+        // "dictitem" : "Ammlb",
+        // "subitem" : "",
+
+        "11" : ""
+    },
+
+    "queryorder":{
+        "funcid" : "410510", //当日委托明细查询
+        "market" : "",
+        "fundid" : "",
+        "fortuneid" : "",
+        "secuid" : "",
+        "stkcode" : "",
+        "ordersno" : "",
+        "ordergroup" : "",
+        "bankcode" : "",
+        "qryflag" : "1",
+        "count" : "10",
+        "poststr" : ""
+    },
+
+    "order-stkOrder":{
+        "funcid" : "999004", //委托，免密委托
+        "market" : "1", //交易市场，0-深圳，1-上海
+        "stkcode" : "600000",
+        "secuid" : "logininfo",
+        "fundid" : "fundid",
+        "bsflag" : "0B",
+        "price" : "10.0",
+        "qty" : "1000",
+        "g_busi_domain" : "SPB",
+        "g_busi_node" : "1",
+        "g_busi_service" : "999004",
+        "g_busi_interface" : "stkOrder",
+        "g_ext_inst" : "ITS",
+        "g_ext_token" : "",
+        "g_ext_sessionid" : "",
+        "g_operid" : "99990002",
+        "g_operpwd" : "dNQuUX1zHjYYwO8GNkEs6A==",
+        "g_operway" : "D",
+        "g_stationaddr" : "127.0.0.1",
+        "g_netaddr2" : "127.0.0.1",
+        "g_ext_sessionid" : "",
+        "g_ext_sessionid" : "",
+        "agentid" : "",
+        "orderprice" : "10.2",
+        "orderqty" : "1000",
+        "orderid" : "",
+        "sourcetype" : "",
+        "bankcode" : "",
+        "bankorderid" : "",
+        "bankid" : "",
+        "remark" : "",
+        "mktval" : "",
+        "seat" : "",
+        "confirmaction" : "",
+        "confirmlevel" : "",
+        "targetseat" : "",
+        "ordergroup" : ""
+    },
+
+    "order-etf":{
+        "funcid" : "410411", //委托
+        "market" : "0", //交易市场，0-深圳，1-上海
+        "stkcode" : "159920", //159919, 510051
+        "secuid" : "logininfo",
+        "fundid" : "fundid",
+        "bsflag" : "4",
+        "price" : "3.0",
+        "qty" : "2000000",
+        "ordergroup" : "",
+        "bankcode" : "",
+        "creditid" : "",
+        "creditflag" : "",
+        "remark" : "",
+        "targetseat" : "",
+        "promiseno" : ""
+    },
+
+    "order":{
+        "funcid" : "410411", //委托
+        "market" : "1", //交易市场，0-深圳，1-上海
+        "stkcode" : "600000",
+        "secuid" : "logininfo",
+        "fundid" : "fundid",
+        "bsflag" : "B",
+        "price" : "2.9",
+        "qty" : "1000",
+        "ordergroup" : "",
+        "bankcode" : "",
+        "creditid" : "",
+        "creditflag" : "",
+        "remark" : "",
+        "targetseat" : "",
+        "promiseno" : ""
+    },
+
+    "cancel":{
+        "funcid" : "410413", //撤单
+        "orderdate" : "",
+        "fundid" : "fundid",
+        "ordersno" : "1150", //委托序号
+        "bsflag" : ""
+    },
+
+    "dealinfo":{
+        "funcid" : "410512", //查成交
+        "fundid" : "",
+        "market" : "",
+        "secuid" : "",
+        "stkcode" : "",
+        "ordersno" : "",
+        "bankcode" : "",
+        "qryflag" : "1",
+        "count" : "10",
+        "poststr" : "",
+        "qryoperway" : ""
+    },
+
+    "enter-hk":{
+        "funcid" : "430010", //港股通，买卖委托
+        "market" : "5", //交易市场，5-沪港通，S-深港通
+        "secuid" : "logininfo",
+        "fundid" : "fundid",
+        "stkcode" : "00001",
+        "bsflag" : "3B",
+        "price" : "10",
+        "qty" : "500",
+        "ordergroup" : "",
+        "timeinforce" : "0"
+    },
+
+    "cancel-hk":{
+        "funcid" : "430011", //港股通，撤单委托
+        "orderdate" : "",
+        "fundid" : "fundid",
+        "ordersno" : "1150", //委托序号
+        "bsflag" : ""
+    },
+
+    "dealinfo-hk":{
+        "funcid" : "430003", //港股通，当日成交查询
+        "fundid" : "",
+        "market" : "",
+        "secuid" : "",
+        "stkcode" : "",
+        "ordersno" : "",
+        "qryflag" : "1",
+        "count" : "10",
+        "poststr" : ""
+    },
+
+    "business3":{}
+}

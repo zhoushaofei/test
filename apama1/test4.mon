@@ -1,0 +1,154 @@
+//*****************************************************************************
+// Title:         Test
+// Description:   Test description
+// Dependencies:  None
+// Author:        zhoushaofei_it
+//
+//*****************************************************************************
+
+// package gats.adapter.trade.astock;
+
+using com.apama.oms.NewOrder;
+using gats.adapter.status.ConnHeartBeat;
+using gats.adapter.trade.CancelOrderReq;
+using gats.adapter.trade.CancelOrderRes;
+using gats.adapter.trade.EntrustConfirm;
+using gats.adapter.trade.DealInfo;
+
+event Statistic {
+    string tag;
+    integer cnt;
+    integer sum;
+    integer min;
+    integer max;
+
+    action init(string tag)
+    {
+        self.tag := tag;
+        self.cnt := 0;
+        self.sum := 0;
+        self.min := 999999;
+        self.max := 0;
+    }
+
+    action doStatistic(integer cost)
+    {
+        self.cnt := self.cnt + 1;
+        self.sum := self.sum + cost;
+
+        if (self.min > cost) then
+        {
+            self.min := cost;
+        }
+        if (self.max < cost) then
+        {
+            self.max := cost;
+        }
+        if (self.cnt = 1000) then
+        {
+            log "Statistic|" + tag + ": ave=" + (self.sum/1000).toString() + ", min=" + self.min.toString() + ", max=" + self.max.toString() at WARN;
+            init(self.tag);
+        }
+    }
+}
+
+monitor Test
+{
+    string userId := "10004";
+    string accontId := "035500000201";
+    string counterType := "JZ";
+    string CH_2A := "JZ_2A";
+    string CH_2C := "JZ_2C";
+
+    // string userId := "10086";
+    // string accontId := "010300761010";
+    // string counterType := "DD";
+    // string CH_2A := "DD_2A";
+    // string CH_2C := "DD_2C";
+
+    import "TimeFormatPlugin" as timeMgr;
+
+    dictionary<string, integer> allDelay;
+
+    Statistic stConfirm := new Statistic;
+    Statistic stDealInfo := new Statistic;
+
+    action onload()
+    {
+        monitor.subscribe(CH_2A);
+
+        stConfirm.init("stConfirm");
+        stDealInfo.init("stDealInfo");
+
+        com.apama.oms.NewOrder n := new com.apama.oms.NewOrder;
+        n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+        n.symbol := "000001";
+        n.marketId := "SZA";
+        n.exchange := "SZSE";
+        n.price := 10.67;
+        n.side := "B";
+        n.type := "L";
+        n.quantity := 100;
+        n.serviceId := counterType;
+        n.ownerId := userId;
+        n.extraParams.add("Account", accontId);
+        n.extraParams.add("AcctType", "A");
+        n.extraParams.add("AlgoId", "TWAP001");
+        n.extraParams.add("AlgoType", "WAP");
+        n.extraParams.add("AssetUnitId", "");
+        n.extraParams.add("Bridge.Name", "bridge:JZJS:oms_49904");
+        n.extraParams.add("CompanyId", "");
+        n.extraParams.add("InstrId", "");
+        n.extraParams.add("NAME", "92469@600000.SHA-6-9@0");
+        n.extraParams.add("OMS.IssueTime", "1593584259.201879");
+        n.extraParams.add("ParentOrderId", "92469_600000_SHA");
+        n.extraParams.add("PortfolioId", "");
+        n.extraParams.add("ProductId", "");
+        n.extraParams.add("ServiceId", counterType);
+        n.extraParams.add("ServiceNode", "");
+        n.extraParams.add("TaskId", "92469");
+        n.extraParams.add("User", userId);
+        n.extraParams.add("channel", "TEST11");
+        n.extraParams.add("slicerId", "6");
+
+        // on all wait(0.1) {
+        //     n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+        //     send n to CH_2C;
+        //     // log n.toString() at INFO;
+
+        //     integer newTime := (timeMgr.getMicroTime()*1000000.0).integralPart();
+        //     allDelay.add(n.orderId,newTime);
+        // }
+
+        on all wait(1.0) {
+            integer cnt := 0;
+            while (cnt < 1000) {
+                integer newTime := (timeMgr.getMicroTime()*1000000.0).integralPart();
+                n.orderId := newTime.toString();
+                send n to CH_2C;
+                // log n.toString() at INFO;
+                cnt := cnt + 1;
+            }
+        }
+
+        EntrustConfirm confirm;
+        on all EntrustConfirm() : confirm {
+            // log confirm.toString() at INFO;
+
+            integer dealTime := (timeMgr.getMicroTime()*1000000.0).integralPart();
+            integer delay:=dealTime-confirm.extraParas.getOrDefault("C").toInteger();
+            stConfirm.doStatistic(delay);
+            // log "EntrustConfirm delay:"+delay.toString() at WARN;
+        }
+
+        DealInfo dealinfo;
+        on all DealInfo() : dealinfo {
+            // log dealinfo.toString() at INFO;
+
+            integer dealTime := (timeMgr.getMicroTime()*1000000.0).integralPart();
+            integer delay:=dealTime-allDelay.getOrDefault(dealinfo.orderId);
+            stDealInfo.doStatistic(delay);
+            // log "DealInfo delay:"+delay.toString() at WARN;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+
+module Test
+{
+
+	struct TestReq
+	{
+		0 optional string msg;
+	};
+
+	struct TestRsp
+	{
+		0 optional string msg;
+	};
+
+    interface Hello
+    {
+        int test1();
+        int test2();
+        int test3(int index, string s, out string r);
+        int test4(TestReq req, out TestRsp rsp);
+    };
+};
+

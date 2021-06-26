@@ -1,0 +1,19 @@
+﻿package com.apama.oms;
+
+event NewOrder
+{
+	string orderId;
+	string symbol;
+	float price;
+	string side;
+	string type;
+	integer quantity;
+	string serviceId;
+	string brokerId;
+	string bookId;
+	string marketId;
+	string exchange;
+	string ownerId;
+	dictionary <string, string> extraParams;
+}
+

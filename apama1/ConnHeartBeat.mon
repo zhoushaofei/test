@@ -1,0 +1,19 @@
+﻿package gats.adapter.status;
+
+event ConnHeartBeat{
+	string id;
+	string channel;
+}
+
+//monitor TestHeartbeat
+//{
+//	action onload()
+//	{
+//		monitor.subscribe("JZ");
+//		ConnHeartBeat heartbeat;
+//		on all ConnHeartBeat(channel="JZ") : heartbeat
+//		{
+//			print("ConnHeartBeat: " + heartbeat.toString());
+//		}
+//	}
+//}

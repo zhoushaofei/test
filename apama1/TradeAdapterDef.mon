@@ -1,0 +1,48 @@
+﻿package gats.adapter.trade;
+
+
+event EntrustConfirm{
+	string orderId;       //策略端产生的订单唯一标识
+	string entrustID;    //委托编号，柜台ID（各种柜台规则不一，无法保证唯一性）
+	string errorCode;  //错误代码，errorCode=0时表示成功，其他为失败
+	string errorMsg;   //错误信息
+	dictionary<string, string> extraParas;  //扩展参数
+}
+
+event CancelOrderRes{
+	string orderId;	//策略端产生的订单唯一标识
+	string errorCode;	//错误代码，errorCode=0时表示成功，其他为失败
+	string errorMsg;	//错误信息
+	string entrustID;   	//委托编号，柜台ID（各种柜台规则不一，无法保证唯一性）
+	dictionary<string, string> extraParas; //扩展参数
+}
+
+event DealInfo {
+	string orderId;	 //策略端产生的订单唯一标识
+	string account;   	 //资金帐号
+	string exchange;  	 //SSE-上海 SZSE-深圳
+	string entrustID; 	 //委托编号，柜台ID（各种柜台规则不一，无法保证唯一性）
+	string dealID;	 //成交编号
+	string side;	 //买卖方向
+	string symbol;	 //标的代码
+	float price;  	 //status=0时为正数，其他情况为0
+	integer volumn;   	 //status=0/1/3时为正数，status=2或4时为0
+	string status;    	 //成交状态：
+//	'0'普通成交
+//	'1'撤单成交
+//	'2'废单
+//	'3'内部撤单
+//	'4'撤单废单
+	dictionary<string, string> extraParas;  //扩展参数
+}
+
+event CancelOrderReq{
+	string orderId;	//策略端产生的订单唯一标识
+	string account;	//资金账户
+	string symbol;	//标的代码
+	string marketId;	//市场
+	string exchange;      //SZSE-深圳，SSE-上海
+	string entrustID;      //委托编号，柜台ID（各种柜台规则不一，无法保证唯一性）
+	dictionary<string, string> extraParas;  //扩展参数
+}
+

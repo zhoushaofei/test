@@ -1,0 +1,27 @@
+
+module Test
+{
+	//事件类型
+    enum HTEventName
+    {
+        EN_TEST_DUMMY = 10001,
+		EN_TEST_REQ = 10002,
+		EN_TEST_RSP = 10003
+    };
+
+    struct TestDummy
+    {
+        1 optional string msg;
+    };
+
+    struct TestReq
+    {
+        1 optional string msg;
+    };
+
+    struct TestRsp
+    {
+        1 optional string msg;
+    };
+};
+

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\rapidjson">
+      <UniqueIdentifier>{d9aa890d-2a7d-4194-a499-ea23a1028bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\rapidjson\msinttypes">
+      <UniqueIdentifier>{34aec9bf-1867-495a-b19f-81defb367f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\rapidjson\internal">
+      <UniqueIdentifier>{8aa372a4-5a3a-43de-90d9-614f5088ad51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\rapidjson\error">
+      <UniqueIdentifier>{2644b3a6-6fdd-4147-9302-4d3d2735d8a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\itpdk">
+      <UniqueIdentifier>{ffb19a86-c524-43f7-988e-872e944f2d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\secitpdk">
+      <UniqueIdentifier>{5dcf329e-0a00-4718-8146-c1ac60af0279}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\secdemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scopeguard.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\allocators.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\cursorstreamwrapper.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\document.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\encodedstream.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\encodings.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\filereadstream.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\filewritestream.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\fwd.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\istreamwrapper.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\memorybuffer.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\memorystream.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\ostreamwrapper.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\pointer.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\prettywriter.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\rapidjson.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\reader.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\schema.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\stream.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\stringbuffer.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\writer.h">
+      <Filter>头文件\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\msinttypes\inttypes.h">
+      <Filter>头文件\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\msinttypes\stdint.h">
+      <Filter>头文件\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\error\en.h">
+      <Filter>头文件\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\error\error.h">
+      <Filter>头文件\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\biginteger.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\diyfp.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\dtoa.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\ieee754.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\itoa.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\meta.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\pow10.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\regex.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\stack.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\strfunc.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\strtod.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\internal\swap.h">
+      <Filter>头文件\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\itpdk\itpdk_dict.h">
+      <Filter>头文件\itpdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\itpdk\itpdk_typedef.h">
+      <Filter>头文件\itpdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\secitpdk\secitpdk.h">
+      <Filter>头文件\secitpdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\secitpdk\secitpdk_struct.h">
+      <Filter>头文件\secitpdk</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\lib\secitpdk.dll">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\exec" />
+    <None Include="..\makefile" />
+    <None Include="itpdk.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\lib\secitpdk.lib">
+      <Filter>资源文件</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

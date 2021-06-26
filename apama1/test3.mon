@@ -1,0 +1,105 @@
+//*****************************************************************************
+// Title:         Test
+// Description:   Test description
+// Dependencies:  None
+// Author:        zhoushaofei_it
+//
+//*****************************************************************************
+
+// package gats.adapter.trade.astock;
+
+using com.apama.oms.NewOrder;
+using gats.adapter.status.ConnHeartBeat;
+using gats.adapter.trade.CancelOrderReq;
+using gats.adapter.trade.CancelOrderRes;
+using gats.adapter.trade.EntrustConfirm;
+using gats.adapter.trade.DealInfo;
+
+monitor Test
+{
+    // string userId := "10004";
+    // string accontId := "035500000201";
+    // string counterType := "JZ";
+    // string CH_2A := "JZ_2A";
+    // string CH_2C := "JZ_2C";
+
+    string userId := "10004";
+    string accontId := "010300761010";
+    string counterType := "DD";
+    string CH_2A := "DD_2A";
+    string CH_2C := "DD_2C";
+
+    integer count := 10000000;
+    integer count_req := 0;
+    integer count_rsp := 0;
+    integer count_dealinfo := 0;
+
+    action onload()
+    {
+        monitor.subscribe(CH_2A);
+
+        com.apama.oms.NewOrder n := new com.apama.oms.NewOrder;
+        n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+        n.symbol := "000001";
+        n.marketId := "SZA";
+        n.exchange := "SZSE";
+        n.price := 10.67;
+        n.side := "B";
+        n.type := "L";
+        n.quantity := 200;
+        n.serviceId := counterType;
+        n.ownerId := userId;
+        n.extraParams.add("Account", accontId);
+        n.extraParams.add("AcctType", "A");
+        n.extraParams.add("AlgoId", "TWAP001");
+        n.extraParams.add("AlgoType", "WAP");
+        n.extraParams.add("AssetUnitId", "");
+        n.extraParams.add("Bridge.Name", "bridge:JZJS:oms_49904");
+        n.extraParams.add("CompanyId", "");
+        n.extraParams.add("InstrId", "");
+        n.extraParams.add("NAME", "92469@600000.SHA-6-9@0");
+        n.extraParams.add("OMS.IssueTime", "1593584259.201879");
+        n.extraParams.add("ParentOrderId", "92469_600000_SHA");
+        n.extraParams.add("PortfolioId", "");
+        n.extraParams.add("ProductId", "");
+        n.extraParams.add("ServiceId", counterType);
+        n.extraParams.add("ServiceNode", "");
+        n.extraParams.add("TaskId", "92469");
+        n.extraParams.add("User", userId);
+        n.extraParams.add("channel", "TEST11");
+        n.extraParams.add("slicerId", "6");
+
+        on wait(10.0) {
+            on all wait(0.1) {
+                integer cnt := 0;
+                while (cnt < 100 and count_req < count) {
+                    n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+                    send n to CH_2C;
+                    // log n.toString() at INFO;
+                    cnt := cnt + 1;
+                    count_req := count_req + 1;
+                }
+            }
+        }
+
+        EntrustConfirm confirm;
+        on all EntrustConfirm() : confirm {
+            count_rsp := count_rsp + 1;
+            // log confirm.toString() at INFO;
+        }
+
+        DealInfo dealinfo;
+        on all DealInfo() : dealinfo {
+            count_dealinfo := count_dealinfo + 1;
+            // log dealinfo.toString() at INFO;
+        }
+
+        on all wait(10.0) {
+            log "------------------------------" at INFO;
+            log "count=" + count.toString() at INFO;
+            log "count_req=" + count_req.toString() at INFO;
+            log "count_rsp=" + count_rsp.toString() at INFO;
+            log "count_dealinfo=" + count_dealinfo.toString() at INFO;
+        }
+    }
+}

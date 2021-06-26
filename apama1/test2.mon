@@ -1,0 +1,143 @@
+//*****************************************************************************
+// Title:         Test
+// Description:   Test description
+// Dependencies:  None
+// Author:        zhoushaofei_it
+//
+//*****************************************************************************
+
+// package gats.adapter.trade.astock;
+
+using com.apama.oms.NewOrder;
+using gats.adapter.status.ConnHeartBeat;
+using gats.adapter.trade.CancelOrderReq;
+using gats.adapter.trade.CancelOrderRes;
+using gats.adapter.trade.EntrustConfirm;
+using gats.adapter.trade.DealInfo;
+
+monitor main{
+	import "TimeFormatPlugin" as time;
+
+    string userId := "10004";
+    string accontId := "035500000201";
+    string counterType := "JZ";
+    string CH_2A := "JZ_2A";
+    string CH_2C := "JZ_2C";
+
+    // string userId := "10004";
+    // string accontId := "010300761010";
+    // string counterType := "DD";
+    // string CH_2A := "DD_2A";
+    // string CH_2C := "DD_2C";
+
+    integer count := 100000;
+    integer count_req := 0;
+    integer count_rsp := 0;
+    integer count_dealinfo := 0;
+
+    float req_t1 := 0.0;
+    float req_t2 := 0.0;
+    float rsp_t1 := 0.0;
+    float rsp_t2 := 0.0;
+    float dealinfo_t1 := 0.0;
+    float dealinfo_t2 := 0.0;
+
+    action onload()
+    {
+        monitor.subscribe(CH_2A);
+        float now := time.getMicroTime();
+        log "now0000000000000000000= " + now.toString() at ERROR;
+
+        com.apama.oms.NewOrder n := new com.apama.oms.NewOrder;
+        n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+        n.symbol := "000001";
+        n.marketId := "SZA";
+        n.exchange := "SZSE";
+        n.price := 10.67;
+        n.side := "B";
+        n.type := "L";
+        n.quantity := 100;
+        n.serviceId := counterType;
+        n.ownerId := userId;
+        n.extraParams.add("Account", accontId);
+        n.extraParams.add("AcctType", "A");
+        n.extraParams.add("AlgoId", "TWAP001");
+        n.extraParams.add("AlgoType", "WAP");
+        n.extraParams.add("AssetUnitId", "");
+        n.extraParams.add("Bridge.Name", "bridge:JZJS:oms_49904");
+        n.extraParams.add("CompanyId", "");
+        n.extraParams.add("InstrId", "");
+        n.extraParams.add("NAME", "92469@600000.SHA-6-9@0");
+        n.extraParams.add("OMS.IssueTime", "1593584259.201879");
+        n.extraParams.add("ParentOrderId", "92469_600000_SHA");
+        n.extraParams.add("PortfolioId", "");
+        n.extraParams.add("ProductId", "");
+        n.extraParams.add("ServiceId", counterType);
+        n.extraParams.add("ServiceNode", "");
+        n.extraParams.add("TaskId", "92469");
+        n.extraParams.add("User", userId);
+        n.extraParams.add("channel", "TEST");
+        n.extraParams.add("slicerId", "6");
+
+        on wait(10.0) {
+            integer i := 0;
+            while i < count {
+                n.orderId :=  currentTime.toString() + "-" + integer.getUnique().toString();
+                send n to CH_2C;
+                // log n.toString() at WARN;
+                i := i + 1;
+                if (i = 1) then {
+                    req_t1 := currentTime;
+                }
+                else if (i = count) then {
+                    req_t2 := currentTime;
+                }
+            }
+        }
+
+        EntrustConfirm confirm;
+        on all EntrustConfirm() : confirm {
+            count_rsp := count_rsp + 1;
+            if (count_rsp = 1) then {
+                rsp_t1 := currentTime;
+            }
+            else if (count_rsp = count) then {
+                rsp_t2 := currentTime;
+            }
+            if (confirm.errorCode != "0") then {
+                log confirm.toString() at ERROR;
+            }
+            if (count_rsp = count) then {
+                log "delay confirm: " + (rsp_t2-rsp_t1).toString() at WARN;
+            }
+        }
+
+        DealInfo dealinfo;
+        on all DealInfo() : dealinfo {
+            count_dealinfo := count_dealinfo + 1;
+            if (count_dealinfo = 1) then {
+                dealinfo_t1 := currentTime;
+            }
+            else if (count_dealinfo = count) then {
+                dealinfo_t2 := currentTime;
+            }
+            if (count_dealinfo = count) then {
+                log "delay dealinfo: " + (dealinfo_t2-dealinfo_t1).toString() at WARN;
+            }
+        }
+
+        on all wait(10.0) {
+            log "------------------------------" at INFO;
+            log "count=" + count.toString() at INFO;
+            log "req_t1=" + req_t1.toString() at INFO;
+            log "req_t2=" + req_t2.toString() at INFO;
+            log "count_req=" + count_req.toString() at INFO;
+            log "rsp_t1=" + rsp_t1.toString() at INFO;
+            log "rsp_t2=" + rsp_t2.toString() at INFO;
+            log "count_rsp=" + count_rsp.toString() at INFO;
+            log "dealinfo_t1=" + dealinfo_t1.toString() at INFO;
+            log "dealinfo_t2=" + dealinfo_t2.toString() at INFO;
+            log "count_dealinfo=" + count_dealinfo.toString() at INFO;
+        }
+    }
+}
